@@ -4,7 +4,11 @@
 |:------------------------|:-----------------------------------------------------|
 | **Status**              | `Approved`                          |
 | **Version**             | `1.0`                                                |
+<<<<<<< HEAD
 | **Date**                | `19/12/2025`                                         |
+=======
+| **Date**                | `9/12/2025`                                         |
+>>>>>>> 8776eecfd125115d2bd60fcb86e373ea0ada3017
 
 ## Introduction
 
@@ -34,7 +38,15 @@ Push button mode switching and input debounce handling
 
 ## Architectural Overview
 
+<<<<<<< HEAD
 @startuml
+=======
+The system is organized into a three-layer architecture that separates the main application logic from the hardware control and low-level drivers.
+
+```plantuml
+@startuml
+
+>>>>>>> 8776eecfd125115d2bd60fcb86e373ea0ada3017
 skinparam rectangle {
     BackgroundColor<<Application>> #FFEEAD
     BackgroundColor<<MCU>> #CDE8F6
@@ -114,6 +126,7 @@ end note
 
 ### Assumptions & Constraints
 
+<<<<<<< HEAD
 Indicate constraints of the low level design and any assumptions appropriate for the design.
 
 @startuml
@@ -183,6 +196,78 @@ package "MCAL Layer" <<MCAL>> {
 "MCAL Layer" -up-> "Actuator Modules"
 "MCAL Layer" -up-> "Sensor Modules"
 @enduml
+=======
+Assumptions:
+
+- Users will input sensible values.
+
+Constrains:
+
+- The microcontroller operates at a stable 16 MHz clock speed.
+- lcd display only 16*2 characters it allows only display 32 characters on two lines at a time .
+
+```plantuml
+@startuml
+title System Flowchart - AC Embedded Control Project
+
+start
+
+:Power ON System;
+:Initialize GPIO, ADC, PWM;
+:Initialize LCD Display;
+:Initialize Keypad & Push Buttons;
+:Initialize Motor (Direction + Speed);
+:Initialize LED Indicator;
+:Initialize EEPROM & Load Saved Temp;
+:Set Default Mode (Mode 1 - Keypad);
+
+' Main Loop
+repeat
+
+  :Check Mode Button;
+  if (Mode Button Pressed?) then (Yes)
+    :Toggle Mode (Keypad / Increment-Decrement);
+  endif
+
+  ' --- Mode 1: Keypad Input ---
+  if (Mode == Keypad Input) then (Yes)
+    :Scan Keypad;
+    if (Valid Temp Entered?) then (Yes)
+      :Set Desired Temperature;
+      :Save Temp to EEPROM;
+    endif
+  endif
+
+  ' --- Mode 2: Increment/Decrement ---
+  if (Mode == Button Adjust) then (Yes)
+    :Check Increase/Decrease Buttons;
+    if (Button Pressed?) then (Yes)
+      :Update Desired Temperature;
+      :Save Temp to EEPROM;
+    endif
+  endif
+
+  :Read LM35 Sensor (ADC);
+  :Convert ADC to Celsius;
+
+  :Compare Real Temp to Desired Temp;
+  if (Temp > Desired?) then (Yes)
+    :Increase Fan Speed (PWM);
+    :Set Motor Direction (Cooling Mode);
+    :Turn ON LED Indicator;
+  else
+    :Turn OFF/Reduce Fan Speed;
+    :Turn OFF LED;
+  endif
+
+  :Update LCD with Current Temp, Desired Temp, and Mode;
+
+repeat while (System Running)
+
+stop
+@enduml
+```
+>>>>>>> 8776eecfd125115d2bd60fcb86e373ea0ada3017
 
 ## Functional Description
 
@@ -203,6 +288,7 @@ package "MCAL Layer" <<MCAL>> {
 
 ## Implementation of the Module
 
+<<<<<<< HEAD
 | Implementation Aspect | Description                                                                                          |
 |-----------------------|------------------------------------------------------------------------------------------------------|
 
@@ -232,6 +318,22 @@ package "MCAL Layer" <<MCAL>> {
 ### Static Files
 
 
+=======
+| Implementation Aspect |Description                                   |
+|-----------------------|-------------------------------------------------|
+| System Initialization | Configures all hardware peripherals at startup, including the ADC for the LM35 sensor, GPIO pins for push buttons and LED, PWM for the DC motor, and the 16×2 LCD. Buttons are configured as inputs with pull-ups, the LED as output, and the motor PWM initialized for speed and direction control.|
+| ADC Data Processing   | Initiates ADC conversions for the LM35 sensor, retrieves digital readings, and converts them into Celsius temperature values using calibrated scaling. Ensures stable measurements by managing sampling timing and filtering out noise.|
+| LCD Output Handling   | Formats the current room temperature, desired temperature, and system mode into display strings and updates the 16×2 LCD using low-level command/data functions. Refreshing occurs only when values change to minimize flicker.|
+| User Input Handling |Reads user input from the keypad (Mode 1) or increment/decrement push buttons (Mode 2). Implements debouncing, validation, and ensures the desired temperature remains within allowable ranges.|
+| Threshold Evaluation & Fan Control |Compares the real-time temperature with the desired temperature and determines whether the fan should turn ON or OFF. Adjusts fan speed and direction using PWM to reach the target temperature efficiently.|
+| LED Indicator Control | Turns the LED ON when the fan is running and OFF when the fan stops, providing a visual status of the motor operation.|
+| Mode Switching Logic | Detects push button presses to switch between Mode 1 (keypad input) and Mode 2 (increment/decrement buttons), updating the system behavior and display accordingly.|
+
+## Integration and Configuration
+
+### Static Files
+
+>>>>>>> 8776eecfd125115d2bd60fcb86e373ea0ada3017
 | File name      | Contents                                                                                                                    |
 |----------------|-----------------------------------------------------------------------------------------------------------------------------|
 | Main.ino        | Main application file that integrates all modules and controls program flow.                                                |
@@ -252,6 +354,10 @@ handling.                                                 |
 
 ### Include Structure
 
+<<<<<<< HEAD
+=======
+```plantuml
+>>>>>>> 8776eecfd125115d2bd60fcb86e373ea0ada3017
 @startuml
 ' STYLING SETUP
 skinparam componentStyle uml2
@@ -396,7 +502,13 @@ package "MCAL Layer" <<MCAL>> {
 "rtc.h" --> "macros_types.h"
 "eeprom.h" --> "i2c.h"
 "eeprom.h" --> "macros_types.h"
+<<<<<<< HEAD
 @enduml
+=======
+
+@enduml
+```
+>>>>>>> 8776eecfd125115d2bd60fcb86e373ea0ada3017
 
 ### Configuration
 
@@ -413,4 +525,8 @@ package "MCAL Layer" <<MCAL>> {
 | LM35 Sensor Pin     | Analog Pin A4       | Analog input pin connected to LM35 temperature sensor.                          |
 | RTC Module          | I2C (SDA, SCL)      | Real-time clock module connected via I2C for time-based features.               |
 | EEPROM Module       | I2C (SDA, SCL)      | Non-volatile memory to store user settings like desired temperature.            |
+<<<<<<< HEAD
 | Microcontroller     | ATmega328P          | Target MCU used for implementation.                                             |
+=======
+| Microcontroller     | ATmega328P          | Target MCU used for implementation.|
+>>>>>>> 8776eecfd125115d2bd60fcb86e373ea0ada3017
