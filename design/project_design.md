@@ -204,7 +204,6 @@ stop
 
 | Mode Switching |  Detects the push button press to switch between Mode 1 (keypad input) and Mode 2 (increment/decrement buttons) and updates the system behavior accordingly.|
 
-
 ## Implementation of the Module
 
 | Implementation Aspect | Description                                                                                          |
@@ -213,25 +212,13 @@ stop
 | System Initialization | Configures all hardware peripherals at startup, including the ADC for the LM35 sensor, GPIO pins for push buttons and LED, PWM for the DC motor, and the 16×2 LCD. Buttons are configured as inputs with pull-ups, the LED as output, and the motor PWM initialized for speed and direction control.|
 
 | ADC Data Processing   | Initiates ADC conversions for the LM35 sensor, retrieves digital readings, and converts them into Celsius temperature values using calibrated scaling. Ensures stable measurements by managing sampling timing and filtering out noise.|
-
-
 | LCD Output Handling   | Formats the current room temperature, desired temperature, and system mode into display strings and updates the 16×2 LCD using low-level command/data functions. Refreshing occurs only when values change to minimize flicker.|
-
-
 | User Input Handling |Reads user input from the keypad (Mode 1) or increment/decrement push buttons (Mode 2). Implements debouncing, validation, and ensures the desired temperature remains within allowable ranges.|
-
-
 | Threshold Evaluation & Fan Control |Compares the real-time temperature with the desired temperature and determines whether the fan should turn ON or OFF. Adjusts fan speed and direction using PWM to reach the target temperature efficiently.|
-
-
 | LED Indicator Control | Turns the LED ON when the fan is running and OFF when the fan stops, providing a visual status of the motor operation.|
-
-
 | Mode Switching Logic | Detects push button presses to switch between Mode 1 (keypad input) and Mode 2 (increment/decrement buttons), updating the system behavior and display accordingly.|
 
-
 ## Integration and Configuration
-
 
 ### Static Files
 
@@ -247,7 +234,6 @@ stop
 | Button.h       | Button header file that provides function prototypes for button handling.                                                   |
 | lcd_i2c.ino        | Source file implementing including command writing, data handling, cursor control, and text formatting for the 16×2 display.|
 | lcd_i2c.h          | lcd header file that has prototypes, constants, and LCD command definitions.                                                |
-handling|
 | lm35.ino       | lm35 Source file that Implements LM35 temperature sensor reading and data conversion logic.                                 |
 | lm35.h         | lm35 header file that provides function prototypes for lm35 reading handling.                                               |
 | led.ino        | LED source file for controlling LED operations.                                                                             |
