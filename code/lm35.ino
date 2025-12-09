@@ -23,3 +23,5 @@ uint8 lm35_get_temperature(void)
 
 	return temp_value;
 }
+
+
