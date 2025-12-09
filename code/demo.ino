@@ -3,15 +3,33 @@
 #include <string.h>
 
 #include "std_types.h"
+
+/*
+*Sensor
+*/
+
 #include "lm35.h"
+
+/*
+ *Displays
+ */
+#include "i2c.h"
 #include "lcd_i2c.h"
 #include "keypad.h"
 #include "button.h"
 #include "led.h"
-#include "motor.h"
-#include "rtc.h"
 #include "uart.h"
+/*
+ * Actuator
+ */
+#include "motor.h"
+
+/*
+ *time and storage
+ */
+#include "rtc.h"
 #include "eeprom.h"
+
 
 /* Global variables */
 uint8 editing        = 0;
@@ -22,7 +40,9 @@ uint8 temp_diff;
 uint8 speed;
 uint8 mode_select;
 uint8 button_value;
-
+/*
+ *strings
+ */
 char C[]    = "C";
 char rtt[]  = "CUR:";
 char reqt[] = "REQ:";
@@ -36,7 +56,10 @@ uint16 start_address = 0x000A;
 /* motorState global (declared extern in motor.h) */
 DcMotor_State motorState = STOP;
 
-/* ------------------ Helper Functions ------------------ */
+
+/*
+ *function that controls temperature based on user input and sensor readings
+ */
 
 void temp_control(void)
 {
@@ -74,6 +97,7 @@ void temp_control(void)
             {
                 digits[index] = (uint8)(key - '0');
                 LCD_intger_to_string_row_column(0, 4 + index, digits[index]);
+                uart_send_string(digits[index]);
                 index++;
                 if (index >= 2) index = 0;
             }
@@ -87,6 +111,10 @@ void temp_control(void)
     }
 }
 
+/*
+ *function to store data in EEPROM
+ */
+
 void eeprom_store_data(uint16 start_addr, rtc_time time, DcMotor_State motorState, uint8 req_t)
 {
     uint16 address = start_addr;
@@ -95,6 +123,10 @@ void eeprom_store_data(uint16 start_addr, rtc_time time, DcMotor_State motorStat
     eeprom_write_byte(address++, (uint8)motorState);
     eeprom_write_byte(address++, req_t);
 }
+
+/*
+ *function that controls AC based on temperature difference
+ */
 
 void ac_control(void)
 {
@@ -136,18 +168,23 @@ void ac_control(void)
 
     LCD_display_string_row_column(1, 0, ac);
     LCD_display_string_row_column(1, 3, mot_state);
+    uart_send_string(mot_state);
 }
-
+/*
+ *function to update time
+ */
 void time_update(void)
 {
     rtc_get_time(&time);
 }
 
-/* ------------------ Arduino setup/loop ------------------ */
 
 void setup(void)
 {
-    /* Initialize peripherals */
+    /*
+     *Initialize peripherals 
+     */
+
     adc_int();          /* for LM35 */
     LCD_init();
     keypad_init();
@@ -181,17 +218,30 @@ void loop(void)
     ac_control();
     time_update();
 
-    /* LCD display */
+    /* 
+     *LCD display 
+     */
+
     LCD_display_string_row_column(0, 0, reqt);
-    if (!editing)
+    uart_send_string(reqt);
+    if (!editing){
+
         LCD_intger_to_string_row_column(0, 4, REQtemperature);
-    LCD_display_string_row_column(0, 6, C);
-
-    LCD_display_string_row_column(0, 8, rtt);
-    LCD_intger_to_string_row_column(0, 12, RTtemperature);
-    LCD_display_string_row_column(0, 14, C);
-
-    /* display time as HH:MM on row 1, cols 9–12 */
-    LCD_intger_to_string_row_column(1, 9,  time.hours);
-    LCD_intger_to_string_row_column(1, 12, time.minutes);
+        UART_send_string(REQtemperature);
+        LCD_display_string_row_column(0, 6, C);
+        UART_send_string(C);
+  
+        LCD_display_string_row_column(0, 8, rtt);
+        UART_send_string(rtt);
+        LCD_intger_to_string_row_column(0, 12, RTtemperature);
+        UART_send_string(RTtemperature);
+        LCD_display_string_row_column(0, 14, C);
+        UART_send_string(C);
+    
+        /* display time as HH:MM on row 1, cols 9–12 */
+        LCD_intger_to_string_row_column(1, 9,  time.hours);
+        UART_send_string(time.hours);
+        LCD_intger_to_string_row_column(1, 12, time.minutes);
+        UART_send_string(time.minutes);
+ }
 }
