@@ -1,0 +1,19 @@
+Part,Description,Quantity,Manufacturer,Part Number,Datasheet,Price (EGP),Total Price (EGP)
+Microcontroller,"ATmega328P-PU, 8-bit MCU",1,Microchip,ATMEGA328P-PU,https://makerselectronics.com/wp-content/uploads/2023/02/ATmega8A-Data-Sheet-DS40001974B.pdf,120.00,120.00
+Crystal Oscillator,"16 MHz Crystal Resonator",1,Generic,XTAL-16MHZ,chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://makerselectronics.com/wp-content/uploads/2021/03/datasheet.pdf,5.00,125.00
+Voltage Regulator,"5 V Voltage Regulator (LM7805)",1,STMicroelectronics,L7805CV,https://www.alldatasheet.com/datasheet-pdf/pdf/96532/ETC/VOLTAGEREGULATOR.html,10.00,135.50
+Capacitor,"22 pF Ceramic Capacitor (for crystal)",2,Generic,CERA-22PF,https://microohm-eg.com/product/ceramic-capacitor-22pf-50v-5/,0.50,125.50
+LED,"Blue LED, 3 mm",1,Generic,3MM-BLUE,https://www.alldatasheet.com/view.jsp?Searchword=LED,1.00,131.00
+Resistors,"220 Ω, 0.25 W",1,Generic,330R,,1.50,132.50
+Motor,"H-Bridge with 2 NPN Transistors (DIY cheapest)",1,Generic,2x BC547,https://www.alldatasheet.com/datasheet-pdf/pdf/33829/ST/BC547.html,5.00,137.50
+Push Button,"Tactile Push Button Switch",4,Generic,TACT-6x6,https://microohm-eg.com/product/press-4pin-push-button-switch-6x6x7-5mm/,4.00,141.50
+Mini Breadboard,"MB-102 170-point Solderless Breadboard",1,Generic,MB-102,https://microohm-eg.com/product/mini-breadboard-170-pin-syb-170/,35.00,176.50
+Jumper Wires,"Male-to-Male Jumper Wires",5,Generic,JW-MM-65,,5.00,181.50
+Temperature Sensor,"Temperature Humidity Sensor Module(DHT11)",1,Future Electronics,DHT11,https://cdn.shopify.com/s/files/1/0672/9409/files/Datasheet_DHT11.pdf?733,40.00,221.50
+MotorDriver,"H-Bridge with 2 NPN Transistors (DIY cheapest)",1,Generic,2x BC547,https://www.alldatasheet.com/datasheet-pdf/pdf/33829/ST/BC547.html,5.00,226.50
+RTC,"Software-based timekeeping (no module)",1,Generic,N/A,https://www.ti.com/lit/ds/symlink/bq32002.pdf?ts=1765018261902&ref_url=https%253A%252F%252Fwww.google.com%252F,65.00,291.50
+EEPROM,"non-volatile memory for Arduino.",1,Generic,N/A,https://ww1.microchip.com/downloads/en/DeviceDoc/I2C%20Serial%20EE%20Family%20Data%20Sheet%2021930C.pdf,20.00,311.50
+Keypad,"3 Tactile Push Buttons (replace 3x4 keypad)",12,Generic,N/A,https://microohm-eg.com/product/press-4pin-push-button-switch-6x6x7-5mm/,12.00,323.50
+I2C LCD 2x16 Display,"I2C Serial Interface 1602 LCD Module",1,Generic,I2C Serial Interface 1602 LCD Module,https://www.ram-e-shop.com/shop/lcd-i2c-2x16-blue-iic-i2c-1602-serial-character-lcd-2x16-display-8884,145.00,468.50
+L9110s,"Motor Driver", 1, Generic,l9110s,https://forum.arduino.cc/t/powering-12v-linear-actuators-with-l9110s/907264,35,503.5
+AA Battery, "9v Battery", 1, Eveready, 1215-4,N/A,20,523.5
