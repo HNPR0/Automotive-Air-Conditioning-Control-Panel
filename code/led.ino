@@ -7,8 +7,6 @@
  * Description :
  * LED Initialization.
  */
-
- 
 void led_init(void)
  {
    gpio_setup_pin_direction(led_port, led_pin, PIN_OUTPUT);         /* Set the LED pin as output */

@@ -3,6 +3,7 @@
 #ifndef COMMON_MACROS
 #define COMMON_MACROS
 
+
 /* Set a certain bit in any register */
 #define SET_BIT(REG,BIT) (REG|=(1<<BIT))
 

@@ -26,4 +26,5 @@ typedef signed long long      sint64;
 typedef float                 float32;
 typedef double                float64;
 
+
 #endif /* STD_TYPE_H_ */
