@@ -235,9 +235,8 @@ stop
 
 ### Static Files
 
-
-| File name      | Contents                                                                                                                    |
-|----------------|-----------------------------------------------------------------------------------------------------------------------------|
+| File name      | Contents                                              |
+|----------------|-------------------------------------------------------|
 | Main.ino        | Main application file that integrates all modules and controls program flow.                                                |
 | ADC.ino        |  ADC source file that includes initialization, channel configuration, and analog-to-digital conversion routines.            |
 | ADC.h          | ADC header file that defines ADC functions and configuration.                                                               |
@@ -248,7 +247,7 @@ stop
 | Button.h       | Button header file that provides function prototypes for button handling.                                                   |
 | lcd_i2c.ino        | Source file implementing including command writing, data handling, cursor control, and text formatting for the 16×2 display.|
 | lcd_i2c.h          | lcd header file that has prototypes, constants, and LCD command definitions.                                                |
-handling.                                                 |
+handling|
 | lm35.ino       | lm35 Source file that Implements LM35 temperature sensor reading and data conversion logic.                                 |
 | lm35.h         | lm35 header file that provides function prototypes for lm35 reading handling.                                               |
 | led.ino        | LED source file for controlling LED operations.                                                                             |
