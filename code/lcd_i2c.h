@@ -37,14 +37,3 @@ void LCD_intger_to_string_row_column(uint8 row,uint8 col,int data);
 void LCD_clear_screen(void);
 
 #endif /* LCD_H_ */
-
-
-
-
-PS C:\Users\Arwa> git init
-Initialized empty Git repository in C:/Users/Arwa/.git/
-PS C:\Users\Arwa> git remote add origin https://github.com/HNPR0/Automotive-Air-Conditioning-Control-Panel.git
-PS C:\Users\Arwa> git remote -v
-origin  https://github.com/HNPR0/Automotive-Air-Conditioning-Control-Panel.git (fetch)
-origin  https://github.com/HNPR0/Automotive-Air-Conditioning-Control-Panel.git (push)
-PS C:\Users\Arwa>

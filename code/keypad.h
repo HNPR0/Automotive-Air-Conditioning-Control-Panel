@@ -3,6 +3,7 @@
 
 #include <avr/io.h>
 
+/* Function Prototypes */
 void keypad_init(void);
 char keypad_getKey(void);  // non-blocking
 
