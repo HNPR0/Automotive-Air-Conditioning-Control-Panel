@@ -5,6 +5,7 @@
 #include "std_types.h"
 
 /* 0=PORTA,1=PORTB,2=PORTC,3=PORTD */
+
 #define PORTNUM  1   /* PORTB */
 #define PINNUM   0   /* PB0 (D8) */
 
